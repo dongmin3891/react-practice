@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <Wrapper>
-        <Hello name="react" color="red" />
+        {/* props 값 설정을 생략하면 = {true} */}
+        <Hello name="react" color="red" isSpecial />
+        {/* <Hello name="react" color="red" isSpecial={true} /> */}
         <Hello color="red" />
       </Wrapper>
     </>

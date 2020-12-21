@@ -1,37 +1,17 @@
 import React from "react";
 
-/*  props 기본 사용법 */ 
-
-/* function Hello(props) {
-  return (
-    <div
-      style={{
-        color: props.color,
-      }}
-    >
-      안녕하세요 {props.name}
-    </div>
-  );
-}  */
-
-/* 비구조할당으로 사용하는 방법  */
-
-/* function Hello(props) {
-  const { name, color } = props;
-  return <div style={{ color }}>안녕하세요 {name}</div>;
-} */
-
- /* 비구조할당으로 사용하는 방법 2 */
-
-function Hello({ color, name }) {
-  return <div style={{ color }}>안녕하세요 {name}</div>;
-} */
-
-/* defaultProps로 기본값 설정   */
-function Hello({ color, name }) {
+/* 조건부 렌더링 */
+function Hello({ color, name, isSpecial }) {
   return (
     <>
-      <div style={{ color }}> Hello, {name} </div>
+      <div style={{ color }}>
+        {/* {isSpecial ? <b>*</b> : null}  
+        삼항연산자를 사용한 조건부 렌더링은 주로 특정 조건에 따라
+        내용이 다를 때 사용 현재는 그냥 보여주고 숨기는 용도
+        이기 때문에 하단의 코드를 사용하면 효율적*/}
+        {isSpecial && <b>*</b>}
+        Hello, {name}
+      </div>
     </>
   );
 }
