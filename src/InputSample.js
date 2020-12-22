@@ -6,13 +6,14 @@ function InputSample() {
     nickName: "",
   });
 
-  const { name, nickName } = inputs;
+  const { name, nickName } = inputs; // 비구조할당으로 inputs 값 추출
 
+  /* 불변성을 유지하기 위해 기존의 객체를 복사하여 값 변경 */
   const onChange = (e) => {
-    const { value, name } = e.target;
+    const { value, name } = e.target; // e.target에서 name과 value를 추출
     setInputs({
-      ...inputs,
-      [name]: value,
+      ...inputs, // 기존의 inputs 객체를 복사
+      [name]: value, // name 키를 가진 값을 value로 설정
     });
   };
 
