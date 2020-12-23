@@ -1,8 +1,23 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import CreateUser from "./CreateUser";
 import UserList from "./UserList";
 
 function App() {
-  const users = [
+  const [inputs, setInputs] = useState({
+    username: "",
+    useremil: "",
+  });
+
+  const { username, useremail } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+  const [users, setUsers] = useState([
     {
       id: 1,
       username: "kimdongmin1",
@@ -18,16 +33,35 @@ function App() {
       username: "kimdongmin3",
       useremail: "rlaehdals3@naver.com",
     },
-  ];
+  ]);
   /* useRef로 컴포넌트 안의 변수 만들기 */
   const nextId = useRef(4);
   const onCreate = () => {
-    // 나중에 구현 할 배열에 항목 추가하는 로직
-    //...
+    const user = {
+      id: nextId.current,
+      username,
+      useremail,
+    };
+    //setUsers([...users, user]); spread 연산자
+
+    setUsers(users.concat(user)); //concat 함수
+
+    setInputs({
+      username: "",
+      useremail: "",
+    });
+
+    nextId.current += 1;
   };
 
   return (
     <div>
+      <CreateUser
+        username={username}
+        useremail={useremail}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
       <UserList users={users} />
     </div>
   );

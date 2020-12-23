@@ -5,7 +5,7 @@ function User({ user }) {
   return (
     <div>
       <b>{user.username}</b>
-      <span>{user.useremail}</span>
+      <span>({user.useremail})</span>
     </div>
   );
 }
