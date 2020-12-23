@@ -22,16 +22,19 @@ function App() {
       id: 1,
       username: "kimdongmin1",
       useremail: "rlaehdals1@naver.com",
+      active: true,
     },
     {
       id: 2,
       username: "kimdongmin2",
       useremail: "rlaehdals2@naver.com",
+      active: false,
     },
     {
       id: 3,
       username: "kimdongmin3",
       useremail: "rlaehdals3@naver.com",
+      active: false,
     },
   ]);
   /* useRef로 컴포넌트 안의 변수 만들기 */
@@ -55,7 +58,17 @@ function App() {
   };
 
   const onRemove = (id) => {
+    //user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = user.id가 id 인 것을 제거함
     setUsers(users.filter((user) => user.id !== id));
+  };
+
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
   };
 
   return (
@@ -66,7 +79,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </div>
   );
 }
