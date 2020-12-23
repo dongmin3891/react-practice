@@ -10,25 +10,7 @@ function User({ user }) {
   );
 }
 
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: "kimdongmin1",
-      useremail: "rlaehdals1@naver.com",
-    },
-    {
-      id: 2,
-      username: "kimdongmin2",
-      useremail: "rlaehdals2@naver.com",
-    },
-    {
-      id: 3,
-      username: "kimdongmin3",
-      useremail: "rlaehdals3@naver.com",
-    },
-  ];
-
+function UserList({ users }) {
   /* 동적인 배열을 렌더링해야 할 때에는 자바스크립트
   내장함수 map()을 사용합니다. */
   return (
