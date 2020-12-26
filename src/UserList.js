@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 /* 한 파일에 여러개의 선언해도 무방 */
 function User({ user, onRemove, onToggle }) {
-  //useEffect 이해 좀더 복습!
+  //useEffect 이해 좀더 복습!++
   useEffect(() => {
     console.log("컴포넌트가 화면에 나타남");
     return () => {
