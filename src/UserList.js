@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 /* 한 파일에 여러개의 컴포넌트 선언해도 무방 */
-function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user, onRemove, onToggle }) {
   //useEffect를 사용하여 마운트언마운트 업에이트시 할 작업 설정하기
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function User({ user, onRemove, onToggle }) {
       <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
-}
+});
 
 function UserList({ users, onRemove, onToggle }) {
   /* 동적인 배열을 렌더링해야 할 때에는 자바스크립트
@@ -44,4 +44,4 @@ function UserList({ users, onRemove, onToggle }) {
   );
 }
 
-export default UserList;
+export default React.memo(UserList);

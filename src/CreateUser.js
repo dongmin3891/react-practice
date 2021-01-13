@@ -20,4 +20,4 @@ function CreateUser({ username, useremail, onChange, onCreate }) {
   );
 }
 
-export default CreateUser;
+export default React.memo(CreateUser);

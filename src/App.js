@@ -55,7 +55,7 @@ function App() {
     };
     //setUsers([...users, user]); spread 연산자
 
-    setUsers(users.concat(user)); //concat 함수
+    setUsers((users) => users.concat(user)); //concat 함수
 
     setInputs({
       username: "",
@@ -63,27 +63,21 @@ function App() {
     });
 
     nextId.current += 1;
-  }, [username, useremail, users]);
+  }, [username, useremail]);
 
-  const onRemove = useCallback(
-    (id) => {
-      //user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
-      // = user.id가 id 인 것을 제거함
-      setUsers(users.filter((user) => user.id !== id));
-    },
-    [users]
-  );
+  const onRemove = useCallback((id) => {
+    //user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = user.id가 id 인 것을 제거함
+    setUsers((users) => users.filter((user) => user.id !== id));
+  }, []);
 
-  const onToggle = useCallback(
-    (id) => {
-      setUsers(
-        users.map((user) =>
-          user.id === id ? { ...user, active: !user.active } : user
-        )
-      );
-    },
-    [users]
-  );
+  const onToggle = useCallback((id) => {
+    setUsers((users) =>
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  }, []);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
