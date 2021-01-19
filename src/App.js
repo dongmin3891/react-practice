@@ -57,6 +57,8 @@ function reducer(state, action) {
   }
 }
 
+export const UserDispatch = React.createContext(null);
+
 function App() {
   const [{ username, useremail }, onChange, reset] = useInputs({
     username: "",
