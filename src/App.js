@@ -57,6 +57,7 @@ function reducer(state, action) {
   }
 }
 
+//UserDispatch 라는 이름으로 내보내줍니다.
 export const UserDispatch = React.createContext(null);
 
 function App() {
