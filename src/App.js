@@ -61,7 +61,7 @@ function reducer(state, action) {
 export const UserDispatch = React.createContext(null);
 
 function App() {
-  const [{ username, useremail }, onChange, reset] = useInputs({
+  const [{ username, useremail }, onChange, onReset] = useInputs({
     username: "",
     useremail: "",
   });
@@ -81,22 +81,8 @@ function App() {
       },
     });
     nextId.current += 1;
-    reset();
-  }, [username, useremail, reset]);
-
-  const onToggle = useCallback((id) => {
-    dispatch({
-      type: "TOGGLE_USER",
-      id,
-    });
-  }, []);
-
-  const onRemove = useCallback((id) => {
-    dispatch({
-      type: "REMOVE_USER",
-      id,
-    });
-  }, []);
+    onReset();
+  }, [username, useremail, onReset]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
