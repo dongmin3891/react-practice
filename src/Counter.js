@@ -1,35 +1,52 @@
-import React, { useReducer } from "react";
+import React, { Component } from "react";
 
-/* useState를 통해 컴포넌트에서 바뀌는 값 관리하기 */
+class Counter extends Component {
+  /* constructor(props) {
+    super(props);
+    this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
+  } 
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
+   constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0
+    };
   }
-}
+  
+  handleIncrease() {
+    console.log('increase');
+  }
 
-function Counter() {
-  const [number, dispatch] = useReducer(reducer, 0);
+  
+  handleDecrease() {
+    console.log('decrease');
+  }*/
 
-  const onIncrease = () => {
-    dispatch({ type: "INCREMENT" });
+  state = {
+    counter: 0,
   };
-  const onDcrease = () => {
-    dispatch({ type: "DECREMENT" });
+
+  handleIncrease = () => {
+    console.log("increase");
+    console.log(this);
   };
 
-  return (
-    <div>
-      <h1>{number}</h1>
-      <button onClick={onIncrease}>+1</button>
-      <button onClick={onDcrease}>-1</button>
-    </div>
-  );
+  handleDecrease = () => {
+    console.log("decrease");
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.counter}</h1>
+        <button onClick={this.handleIncrease}>+1</button>
+        <button onClick={this.handleDecrease}>-1</button>
+        {/* <button onClick={() => this.handleIncrease()}>+1</button>
+    <button onClick={() => this.handleDecrease()}>-1</button> */}
+      </div>
+    );
+  }
 }
 
 export default Counter;
