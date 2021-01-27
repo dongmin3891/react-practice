@@ -28,12 +28,15 @@ class Counter extends Component {
   };
 
   handleIncrease = () => {
-    console.log("increase");
-    console.log(this);
+    this.setState({
+      counter: this.state.counter + 1,
+    });
   };
 
   handleDecrease = () => {
-    console.log("decrease");
+    this.setState({
+      counter: this.state.counter - 1,
+    });
   };
 
   render() {
