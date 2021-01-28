@@ -23,10 +23,30 @@ class Counter extends Component {
     console.log('decrease');
   }*/
 
-  state = {
+  /*  state = {
     counter: 0,
   };
+ 
+ 
 
+  handleIncrease = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+    });
+  };
+
+  handleDecrease = () => {
+    this.setState({
+      counter: this.state.counter - 1,
+    });
+  }; */
+
+  //state에 다른 값이 들어있다면
+
+  state = {
+    counter: 0,
+    fixed: 1,
+  };
   handleIncrease = () => {
     this.setState({
       counter: this.state.counter + 1,
@@ -46,7 +66,8 @@ class Counter extends Component {
         <button onClick={this.handleIncrease}>+1</button>
         <button onClick={this.handleDecrease}>-1</button>
         {/* <button onClick={() => this.handleIncrease()}>+1</button>
-    <button onClick={() => this.handleDecrease()}>-1</button> */}
+            <button onClick={() => this.handleDecrease()}>-1</button> */}
+        <p>고정된 값: {this.state.fixed}</p>
       </div>
     );
   }
