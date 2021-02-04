@@ -12,13 +12,13 @@ async function getUsers() {
 }
 
 function Users() {
-  const [state, refetch] = useAsync(getUsers, []);
+  const [state, refetch] = useAsync(getUsers, [], true);
 
   const { loading, data: users, error } = state; // state.data 를 users 키워드로 조회
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!users) return null;
+  if (!users) return <button onClick={refetch}>불러오기</button>;
   return (
     <>
       <ul>
