@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
-
+import createAsyncDispatcher from "./asyncActionUtils";
+import * as api from "./api"; // api 파일에서 내보낸 모든 함수들을 불러옴
 // UsersContext 에서 사용 할 기본 상태
 const initialState = {
   users: {
@@ -130,3 +131,6 @@ export async function getUser(dispatch, id) {
     dispatch({ type: "GET_USER_ERROR", error: e });
   }
 }
+
+export const getUsers = createAsyncDispatcher("GET_USERS", api.getUsers);
+export const getUser = createAsyncDispatcher("GET_USER", api.getUser);
